@@ -14,4 +14,19 @@ public class HomeController {
 		return "index";
 	}
 	
+	@GetMapping("/skill")
+	public String skill() {
+		return "skill/skill";
+	}
+	
+	@GetMapping("/skill2_1")
+	public String skill2_1() {
+		return "skill/jobskill/jobskill2_1";
+	}
+	
+	@GetMapping("/skill_error")
+	public String skill_error() {
+		return "skill/error";
+	}
+	
 }
