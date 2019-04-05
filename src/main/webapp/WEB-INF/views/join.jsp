@@ -25,7 +25,7 @@
       <p>던전 & 파이터 공략 사이트의 만남</p>
       <p id = "head_title">대한민국 1등 던전 & 파이터 공략 사이트</p>
     </div>
-    <form id="frm" name="frm" action="member_join" method="post">
+    <form id="frm" name="frm" action="join/member_join" method="post">
       <input type='hidden' id='chk_userid' name='chk_userid' value='0' />
       <input type='hidden' id='chk_usernick' name='chk_usernick' value='0' />
       <div class="contents">
@@ -505,11 +505,11 @@ oo는 이용자 혹은 법정 대리인의 요청에 의해 해지 또는 삭제
     })
 
     function idcheck() {
-      window.open("id_check",'ot','width=350, height=150, scrollers=no, left=250, top=65');
+      window.open("/join/id_check",'ot','width=450, height=200, scrollers=no, left=250, top=65');
     }
 
     function nickcheck() {
-        window.open("nick_check",'ot','width=350, height=150, scrollers=no, left=250, top=65');
+        window.open("/join/nick_check",'ot','width=450, height=200, scrollers=no, left=250, top=65');
     }
 
     function infoConfirm() {

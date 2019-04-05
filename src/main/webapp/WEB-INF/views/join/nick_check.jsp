@@ -31,7 +31,7 @@
             <td class="nick_check">
               <strong>닉네임 : </strong>
               <input type="text" name="usernick" maxlength="6" id="usernick" />
-              <input type="image" id="check" src="/resources/images/join/btn_overlap_s.gif" onclick="nick_check()" /> <br />
+              <input type="image" id="check" src="/resources/images/join/btn_overlap_s.gif" /> <br />
               <span id="errorspan"><p></p></span>
             </td>
           </tr>
@@ -54,7 +54,7 @@
       event.preventDefault();
     })
 
-    function nick_check() {
+     $('#check').on('click', function(event) {
     	var usernick = $('#usernick').val();
     	console.log(usernick);
 
@@ -73,7 +73,7 @@
       $.ajax({
     	  type : 'POST',
     	  data : usernick,
-    	  url : "nickcheck",
+    	  url : "nick_check",
     	  dataType : "JSON",
     	  contentType : "application/json; charset=UTF-8",
     	  success : function(data) {
@@ -92,7 +92,7 @@
     		  }
     	  }
       });
-    }
+    });
 
 	function assign_nick()
 	{

@@ -29,4 +29,8 @@ public class HomeController {
 		return "skill/error";
 	}
 	
+	@GetMapping("/join")
+	public String joinPage() {
+		return "join";
+	}
 }

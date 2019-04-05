@@ -31,7 +31,7 @@
             <td class="id_check">
               <strong>아이디 : </strong>
               <input type="text" name="userid" maxlength="15" id="userid" />
-              <input type="image" id="check" src="/resources/images/join/btn_overlap_s.gif" onclick="id_check()" /> <br />
+              <input type="image" id="check" src="/resources/images/join/btn_overlap_s.gif" /> <br />
               <span id="errorspan"><p></p></span>
             </td>
           </tr>
@@ -49,12 +49,12 @@
   </body>
   <script type="text/javascript">
     var idck = 0;
-
     $('#checkedupfrm').on("click", function(event){
-      event.preventDefault();
-    })
-
-    function id_check() {
+        event.preventDefault();
+      })
+      
+    $('#check').on('click', function(event) {
+    	
     	var userid = $('#userid').val();
     	console.log(userid);
 
@@ -73,7 +73,7 @@
       $.ajax({
     	  type : 'POST',
     	  data : userid,
-    	  url : "idcheck",
+    	  url : "id_check",
     	  dataType : "JSON",
     	  contentType : "application/json; charset=UTF-8",
     	  success : function(data) {
@@ -92,7 +92,7 @@
     		  }
     	  }
       });
-    }
+    });
 
 	function assign_id()
 	{
