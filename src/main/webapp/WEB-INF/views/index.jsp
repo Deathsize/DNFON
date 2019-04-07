@@ -2,7 +2,7 @@
     pageEncoding="utf-8"%>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -31,12 +31,12 @@
             <div class="leftlink">
               <label id="maker">blog.naver.com/fb_lua</label>
             </div>
-          	<c:if test="${empty userinfo}">
+            <sec:authorize access="isAnonymous()">
           		<%@ include file='/WEB-INF/views/main/header.jsp' %>
-          	</c:if>
-          	<c:if test="${! empty userinfo}">
-          		<%@ include file='/WEB-INF/views/login/header.jsp' %>
-          	</c:if>
+			</sec:authorize>
+			<sec:authorize access="isAuthenticated()">
+				<%@ include file='/WEB-INF/views/login/header.jsp' %>
+			</sec:authorize>
           </div>
           <div id="logo"></div>
           <div id ="main_ad">
@@ -56,12 +56,12 @@
         </nav>
         <section class="content">
           <nav>
-          	<c:if test="${empty userinfo}">
-          		<%@ include file='/WEB-INF/views/main/nav.jsp' %>
-          	</c:if>
-          	<c:if test="${! empty userinfo}">
-          		<%@ include file='/WEB-INF/views/login/nav.jsp' %>
-          	</c:if>
+          <sec:authorize access="isAnonymous()">
+          	<%@ include file='/WEB-INF/views/main/nav.jsp' %>
+			</sec:authorize>
+			<sec:authorize access="isAuthenticated()">
+				<%@ include file='/WEB-INF/views/login/nav.jsp' %>
+			</sec:authorize>
             <div class="side_banner">
               <img src="/resources/images/advertisement/side_1.jpg" alt="">
               <img src="/resources/images/advertisement/board_1.jpg" alt="">

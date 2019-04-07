@@ -1,14 +1,18 @@
 package org.dnfon.dto;
 
+import java.util.List;
+
 import lombok.Data;
 
 @Data
 public class MemberVO {
-	private String id;
-	private String pw;
-	private String name;
-	private String nick;	
-	private String email;
-	private int lv;
-	private int point;
+	private String userid;
+	private String userpw;
+	private String userName;
+	private String userNick;	
+	private String userEmail;
+	private int userLevel;
+	private int userPoint;
+	private String enable;
+	private List<AuthVO> authList;
 }

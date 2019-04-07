@@ -30,7 +30,7 @@ public class JoinController {
 	//아이디 체크
 	@PostMapping("/id_check")
 	@ResponseBody
-	public Map<Object, Object> idcheck(@RequestBody String userid) {
+	public Map<Object, Object> idcheck(@RequestBody String userid) throws Exception {
 		System.out.println("id_check() : " + userid);
 		return service.id_check(userid);
 	}
@@ -38,14 +38,14 @@ public class JoinController {
 	//아이디 체크
 	@PostMapping("/nick_check")
 	@ResponseBody
-	public Map<Object, Object> nickcheck(@RequestBody String usernick) {
+	public Map<Object, Object> nickcheck(@RequestBody String usernick) throws Exception {
 		System.out.println("nick_check() : " + usernick);
 		return service.nick_check(usernick);
 	}
 	
 	//회원가입
 	@PostMapping("/member_join")
-	public String member_join(HttpServletRequest request, Model model) {
+	public String member_join(HttpServletRequest request, Model model) throws Exception {
 		System.out.println("member_join()");
 		model.addAttribute("request", request);
 		

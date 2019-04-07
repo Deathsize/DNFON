@@ -6,18 +6,44 @@
   	<!-- 아이디체크 -->
   	<select id="id_check" resultType="int">
 		<![CDATA[
-			select count(*) from member where id = #{userid}
+			select count(*) from member where userid = #{userid}
 		]]>
 	</select>
 	<!-- 닉네임 체크 -->
 	<select id="nick_check" resultType="int">
 		<![CDATA[
-			select count(*) from member where nick = #{usernick}
+			select count(*) from member where usernick = #{usernick}
 		]]>
 	</select>
 	<!-- 회원가입 -->
 	<insert id="insert">
-		insert into member (id, pw, name, nick, email)
-		values (#{id}, #{pw}, #{name}, #{nick}, #{email})
+		insert all into member(userid, userpw, username, usernick, useremail) values (#{userid}, #{userpw}, #{userName}, #{userNick}, #{userEmail})
+		into member_auth(userid, auth) values(#{userid},'ROLE_MEMBER') select * from dual
 	</insert>
-  </mapper>
+	
+	<resultMap type="org.dnfon.dto.MemberVO" id="memberMap">
+    <id property="userid" column="userid"/>
+    <result property="userid" column="userid"/>
+    <result property="userpw" column="userpw"/>
+    <result property="userName" column="username"/>
+    <result property="userNick" column="usernick"/>
+    <result property="userEmail" column="useremail"/>
+    <result property="userLevel" column="userlevel"/>
+    <result property="userPoint" column="userpoint"/>
+        <collection property="authList" resultMap="authMap" /> 
+  </resultMap>
+  
+  <resultMap type="org.dnfon.dto.AuthVO" id="authMap">
+    <result property="userid" column="userid"/>
+    <result property="auth" column="auth"/>
+  </resultMap>
+  
+  <select id="read" resultMap="memberMap">
+
+	SELECT 
+  		mem.userid, userpw, username, usernick, useremail, userpoint, userlevel, enabled, auth
+	FROM 
+  		member mem LEFT OUTER JOIN member_auth auth on mem.userid = auth.userid 
+	WHERE mem.userid = #{userid} 
+  </select>
+ </mapper>

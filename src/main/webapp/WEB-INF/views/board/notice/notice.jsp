@@ -15,16 +15,24 @@
   <tbody>
     <c:forEach items="${list}" var="dto">
       <tr>
-        <td>${dto.bId}</td>
-        <td>${dto.bNick}</td>
-        <td><c:forEach begin="1" end="${dto.bIndent}">-</c:forEach>
-        <a href="content_view?bId=${dto.bId}">${dto.bTitle}</a></td>
-        <td><fmt:formatDate pattern="yyyy-MM-dd" value="${dto.dateInserted}" /></td>
-        <td>${dto.bHit}</td>
+        <td>${dto.bno}</td>
+        <td>${dto.nick}</td>
+        <td><a class="move" href="${dto.bno}">${dto.title}</a></td>
+        <td><fmt:formatDate pattern="yyyy-MM-dd" value="${dto.updateDate}" /></td>
+        <td>${dto.hit}</td>
       </tr>
     </c:forEach>
   </tbody>
 </table>
 <div id="btns_list">
-  <img src="/resources/images/board/btn_write.gif" onclick="notice_write()" alt="">
+  <img src="/resources/images/board/btn_write.gif" id="notice_write" alt="">
 </div>
+<script>
+$('#notice_write').on('click',function(event) {
+	  $('.main_content').load("/notice_write");
+});
+$(".move").on("click",function(e) {
+	e.preventDefault();
+   $('.main_content').load("/content_view?bno=" + $(this).attr("href"));
+ });
+</script>

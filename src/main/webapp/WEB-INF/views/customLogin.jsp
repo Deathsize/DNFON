@@ -24,15 +24,15 @@
     <div id="wrap">
       <div class="headline"></div>
       <div class="memberlogin">
-        <form id="loginForm" name="loginForm" action="/member_login" method="post">
+        <form id="loginForm" name="loginForm" action="/login" method="post">
           <input type="hidden" name="" value="" />
           <fieldset>
             <div class="loginWrap">
               <p>
-                <input type="text" name="id" maxlength="10" />
+                <input type="text" name="username" maxlength="10" />
               </p>
               <p>
-                <input type="password" name="pw" maxlength="12" />
+                <input type="password" name="password" maxlength="12" />
               </p>
               <p>
                 <button class="ui primary button">로그인</button>
