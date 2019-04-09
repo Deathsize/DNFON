@@ -2,6 +2,7 @@ package org.dnfon.service;
 
 import java.util.List;
 
+import org.dnfon.dto.Criteria;
 import org.dnfon.dto.NoticeBoardVO;
 import org.dnfon.mapper.NoticeBoardMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,9 +21,9 @@ public class NoticeBoardServiceImpl implements NoticeBoardService {
 	
 	//리스트 출력
 	@Override
-	public List<NoticeBoardVO> getList() throws Exception {
+	public List<NoticeBoardVO> getList(Criteria cri) throws Exception {
 		// TODO Auto-generated method stub
-		return mapper.getList();
+		return mapper.getListWithPaging(cri);
 	}
 	
 	//입력
@@ -66,5 +67,12 @@ public class NoticeBoardServiceImpl implements NoticeBoardService {
 		// TODO Auto-generated method stub
 		System.out.println("delete");
 		return mapper.remove(bno) == 1;
+	}
+	
+	//페이지Total
+	public int getTotal(Criteria cri) throws Exception {
+		System.out.println("get Total Count()");
+		return mapper.getTotalCount(cri);
+		
 	}
 }

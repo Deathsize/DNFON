@@ -22,7 +22,8 @@
       </tbody>
     </table>
     <form id="checkedupfrm" name="checkedupfrm" method="post">
-      <table class="id_body">
+       <input type="hidden"name="${_csrf.parameterName}"value="${_csrf.token}"/>
+        <table class="id_body">
         <tbody id = "ok_id">
           <tr id="check_id">
             <td>사용하려는 아이디를 입력해주세요.</td>
@@ -52,9 +53,9 @@
     $('#checkedupfrm').on("click", function(event){
         event.preventDefault();
       })
-      
+
     $('#check').on('click', function(event) {
-    	
+
     	var userid = $('#userid').val();
     	console.log(userid);
 

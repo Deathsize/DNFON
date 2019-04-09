@@ -1,10 +1,13 @@
 package org.dnfon.controller;
 
+import org.dnfon.dto.Criteria;
 import org.dnfon.dto.NoticeBoardVO;
+import org.dnfon.dto.PageDTO;
 import org.dnfon.service.NoticeBoardService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,9 +23,14 @@ public class NoticeBoardController {
 	
 	//list
 	@GetMapping("/notice")
-	public String list(Model model) throws Exception {
+	public String list(Criteria cri, Model model) throws Exception {
 		System.out.println("list");
-		model.addAttribute("list", service.getList());
+		model.addAttribute("list", service.getList(cri));
+		int total = service.getTotal(cri);
+		
+		System.out.println(cri.getPageNum());
+		
+		model.addAttribute("pageMaker", new PageDTO(cri, total));
 		return "board/notice/notice";
 	}
 	
@@ -42,7 +50,7 @@ public class NoticeBoardController {
 	
 	//페이지 보기
 	@GetMapping("content_view")
-	public String content_view(@RequestParam("bno") Long bno, Model model) throws Exception {
+	public String content_view(@RequestParam("bno") Long bno, @ModelAttribute("cri") Criteria cri,  Model model) throws Exception {
 		System.out.println("content_view()");
 		model.addAttribute("content_view", service.get(bno));
 		return "board/notice/notice_view";

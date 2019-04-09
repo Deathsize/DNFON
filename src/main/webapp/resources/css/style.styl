@@ -176,8 +176,35 @@ footer {
 .main_content .ui.green.table .title_size{
   width:387px;
 }
-.main_content #btns_list {
+#btns_list {
   text-align: right;
+  order: 2;
+  margin-right: 15px;
+}
+.paging {
+  display: flex;
+  flex-flow: row wrap;
+}
+.paging.left {
+  margin: 0;
+  text-align: left;
+  order: 1;
+  margin-left: 13px;
+}
+.paginate_button {
+  display: inline;
+}
+.paginate_button.active a {
+  padding: 8px 12px;
+  color: #fff;
+  background-color: #4e73df;
+  border-color: #4e73df;
+}
+.paginate_button a {
+  padding: 8px 12px;
+  border: 1px solid #dddfed;
+  color: #4e73df;
+  background-color: #fff;
 }
 .bottom_nav {
   text-align: center;

@@ -6,6 +6,7 @@
 <div class="ui form">
   <div class="inline field">
     <form class="login" action="/login" method="post">
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
       <input type="text" name="username" maxlength="10" placeholder="ID">
       <input type="password" name="password" maxlength="12" placeholder="Password">
       <input type="image" src="/resources/images/login/login.jpg" id="loginbtn">
