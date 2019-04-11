@@ -8,7 +8,7 @@
     <h2>공지사항</h2>
   </div>
   <form id="notice_insert" method="post">
-  
+  	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>          
   	<input type="hidden" name="nick" value= '<sec:authentication property="principal.member.userNick"/>' />
     <table>
       <thead>

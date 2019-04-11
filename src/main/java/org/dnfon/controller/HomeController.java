@@ -73,5 +73,15 @@ public class HomeController {
 	public String notice_write() {
 		return "board/notice/notice_write";
 	}
+	
+	@GetMapping("/error")
+	public String error() {
+		return "error/error";
+	}
+	@GetMapping("/accessEorror")
+	public String accessEorror() {
+		return "error//accessEorror";
+		
+	}
 }
 

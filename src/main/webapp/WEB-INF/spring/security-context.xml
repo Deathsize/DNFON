@@ -11,7 +11,7 @@
 		class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
 	<bean id="customUserDetailsService"
 		class="org.dnfon.security.CustomUserDetailsService"></bean>
-	
+		
 	<security:http>
 		<security:intercept-url pattern="/" access="permitAll" />
 		<security:intercept-url pattern="/notice_write" access="hasRole('ROLE_MEMBER')"/>
@@ -22,7 +22,6 @@
 		<security:headers>
          	<security:frame-options disabled="true"></security:frame-options>
     	</security:headers>
-
 	</security:http>
 	
 	<security:authentication-manager>

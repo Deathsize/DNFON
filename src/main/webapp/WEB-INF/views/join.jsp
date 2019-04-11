@@ -26,6 +26,7 @@
       <p id = "head_title">대한민국 1등 던전 & 파이터 공략 사이트</p>
     </div>
     <form id="frm" name="frm" action="join/member_join" method="post">
+   	  <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>  
       <input type='hidden' id='chk_userid' name='chk_userid' value='0' />
       <input type='hidden' id='chk_usernick' name='chk_usernick' value='0' />
       <div class="contents">

@@ -10,6 +10,7 @@ import org.dnfon.mapper.MemberMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 
 import lombok.AllArgsConstructor;
@@ -49,6 +50,7 @@ public class MemberServiceImpl implements MemberService {
 		
 		return map;
 	}
+	@Transactional
 	@Override
 	public void insert(Model model) throws Exception {
 		// TODO Auto-generated method stub
@@ -76,8 +78,9 @@ public class MemberServiceImpl implements MemberService {
 			System.out.println("텍스트 오류");
 			return;
 		}
-		
-		mapper.insert(dto);
-		
+	
+		if(mapper.id_check(dto.getUserid()) == 0 && mapper.nick_check(dto.getUserNick()) == 0) {
+			mapper.insert(dto);
+		}
 	}
 }

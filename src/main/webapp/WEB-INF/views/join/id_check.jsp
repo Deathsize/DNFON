@@ -22,7 +22,6 @@
       </tbody>
     </table>
     <form id="checkedupfrm" name="checkedupfrm" method="post">
-       <input type="hidden"name="${_csrf.parameterName}"value="${_csrf.token}"/>
         <table class="id_body">
         <tbody id = "ok_id">
           <tr id="check_id">
@@ -70,13 +69,17 @@
         checkedupfrm.userid.focus();
         return;
       }
-
+      var csrfHeaderName ="${_csrf.headerName}"; 
+      var csrfTokenValue="${_csrf.token}";
       $.ajax({
     	  type : 'POST',
     	  data : userid,
     	  url : "id_check",
     	  dataType : "JSON",
     	  contentType : "application/json; charset=UTF-8",
+    	  beforeSend: function(xhr) {
+              xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+          },
     	  success : function(data) {
     		  if(data.cnt > 0) {
     			  $('#check_id td').remove();

@@ -49,16 +49,16 @@
 	
 	<error-page>
 		<error-code>404</error-code>
-		<location>/error/error</location>
+		<location>/error</location>
 	</error-page>
 	<error-page>
 		<error-code>500</error-code>
-		<location>/error/error</location>
+		<location>/error</location>
 	</error-page>
-		<filter>
-		
+	
 	<!-- security 설정 -->
-	<filter-name>springSecurityFilterChain</filter-name>
+	<filter>	
+		<filter-name>springSecurityFilterChain</filter-name>
 		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
 	</filter>
 

@@ -10,14 +10,15 @@
     <h2>공지사항</h2>
   </div>
   <form id="noticeUp" action="/modify" method="post">
-    <input type="hidden" name="bno" value=${reply_view.bno} />
-    <input type="hidden" name="nick" value=${reply_view.nick} />
-    <input type="hidden" name="hit" value=${reply_view.hit} />
+  	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>          
+    <input type="hidden" name="bno" value="${reply_view.bno}" />
+    <input type="hidden" name="nick" value="${reply_view.nick}" />
+    <input type="hidden" name="hit" value="${reply_view.hit}" />
     <table>
       <thead>
         <tr>
           <td class="recw_common">제목</td>
-          <td colspan="3" class="colw_subject"><input type="text" id="title" name="title" value=${reply_view.title}></td>
+          <td colspan="3" class="colw_subject"><input type="text" id="title" name="title" value="${reply_view.title}" /></td>
         </tr>
       </thead>
       <tbody>
